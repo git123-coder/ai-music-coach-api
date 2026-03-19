@@ -1,6 +1,6 @@
 __pycache__/
 .env
-uploads
+uploads/
 *.pyc
 .db
 venv/
