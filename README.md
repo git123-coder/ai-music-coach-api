@@ -1,48 +1,37 @@
 📌 AI Music Coach API
 
-A backend API that analyzes a student's musical performance (guitar/piano) from an audio recording and provides actionable feedback on timing, tempo, and pitch.
+A backend API that analyzes musical performance from audio recordings (guitar/piano) and returns actionable feedback on tempo, pitch characteristics, and timing consistency.
 
 🚀 Features
-
 Upload audio recordings via API
-
-Extract musical features using signal processing:
-
+Extract musical features using audio signal processing:
 Tempo detection
-
-Pitch analysis
-
+Pitch estimation
 Timing consistency
-
-Generate human-readable feedback
-
-Store analysis results
+Generate human-readable feedback using rule-based logic
+Store analysis results in PostgreSQL
+Deployed backend with live API endpoint
 
 🧠 How It Works
-
 User uploads an audio file
-
 Audio is processed using librosa:
-
 Beat tracking → tempo
-
-Pitch estimation
-
+Pitch estimation (YIN)
 Onset detection → timing variation
-
-Extracted metrics are passed into a feedback engine
-
+Extracted metrics are passed into a rule-based feedback engine
 API returns structured analysis + actionable suggestions
 
+⚡ Note: For performance, analysis is limited to the first few seconds of audio.
+
 🛠 Tech Stack
-
 FastAPI (backend)
-
 PostgreSQL (database)
-
 Librosa (audio analysis)
-
 Python
+🌐 Live API
+https://your-render-url.onrender.com/docs
+
+(Replace with your actual deployed URL)
 
 📥 API Endpoint
 Upload Recording
@@ -51,7 +40,6 @@ POST /analyze
 Request:
 
 multipart/form-data
-
 file: audio file
 
 Response:
@@ -64,19 +52,21 @@ Response:
   },
   "feedback": "Your timing fluctuates significantly. Practice with a metronome at 60 BPM."
 }
-⚙️ Setup
+⚙️ Setup (Local)
 git clone <your-repo>
 cd <repo>
 pip install -r requirements.txt
 uvicorn app.main:app --reload
+🧪 Quick Test
+
+You can test using any short .wav file:
+
+Go to /docs
+Use the /analyze endpoint
+Upload an audio file (5–10 seconds recommended)
 🔮 Future Improvements
-
+Session-based progress tracking
 Real-time feedback
-
-User authentication & profiles
-
-Better pitch accuracy modeling
-
 Visual performance graphs
-
-AI-based personalized practice plans
+More accurate pitch modeling
+Frontend interface for audio upload and visualization
