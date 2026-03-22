@@ -33,8 +33,6 @@ Python
 🌐 Live API
 https://ai-music-coach-api.onrender.com/docs
 
-(Replace with your actual deployed URL)
-
 📥 API Endpoint
 Upload Recording
 POST /analyze
