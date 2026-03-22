@@ -28,8 +28,10 @@ FastAPI (backend)
 PostgreSQL (database)
 Librosa (audio analysis)
 Python
+
+
 🌐 Live API
-https://your-render-url.onrender.com/docs
+https://ai-music-coach-api.onrender.com/docs
 
 (Replace with your actual deployed URL)
 
@@ -52,18 +54,23 @@ Response:
   },
   "feedback": "Your timing fluctuates significantly. Practice with a metronome at 60 BPM."
 }
+
+
 ⚙️ Setup (Local)
 git clone <your-repo>
 cd <repo>
 pip install -r requirements.txt
 uvicorn app.main:app --reload
+
+
 🧪 Quick Test
 
-You can test using any short .wav file:
+You can test using any short .wav file or use the sample file in /samples/test.wav for testing.
 
 Go to /docs
 Use the /analyze endpoint
 Upload an audio file (5–10 seconds recommended)
+
 🔮 Future Improvements
 Session-based progress tracking
 Real-time feedback
