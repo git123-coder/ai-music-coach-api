@@ -1,8 +1,8 @@
-📌 AI Music Coach API
+# 📌 AI Music Coach API
 
 A backend API that analyzes musical performance from audio recordings (guitar/piano) and returns actionable feedback on tempo, pitch characteristics, and timing consistency.
 
-🚀 Features
+## 🚀 Features
 Upload audio recordings via API
 Extract musical features using audio signal processing:
 Tempo detection
@@ -12,7 +12,7 @@ Generate human-readable feedback using rule-based logic
 Store analysis results in PostgreSQL
 Deployed backend with live API endpoint
 
-🧠 How It Works
+## 🧠 How It Works
 User uploads an audio file
 Audio is processed using librosa:
 Beat tracking → tempo
@@ -21,7 +21,7 @@ Onset detection → timing variation
 Extracted metrics are passed into a rule-based feedback engine
 API returns structured analysis + actionable suggestions
 
-⚡ Note: For performance, analysis is limited to the first few seconds of audio.
+### ⚡ Note: For performance, analysis is limited to the first few seconds of audio.
 
 🛠 Tech Stack
 FastAPI (backend)
@@ -30,7 +30,9 @@ Librosa (audio analysis)
 Python
 
 
-🌐 Live API
+## 🌐 Live API
+### ⚠️ Note: App may take ~30–60 seconds to load initially due to free-tier cold start.
+
 https://ai-music-coach-api.onrender.com/docs
 
 📥 API Endpoint
@@ -61,7 +63,7 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 
 
-🧪 Quick Test
+## 🧪 Quick Test
 
 You can test using any short .wav file or use the sample file in /samples/test.wav for testing.
 
@@ -69,7 +71,7 @@ Go to /docs
 Use the /analyze endpoint
 Upload an audio file (5–10 seconds recommended)
 
-🔮 Future Improvements
+## 🔮 Future Improvements
 Session-based progress tracking
 Real-time feedback
 Visual performance graphs
