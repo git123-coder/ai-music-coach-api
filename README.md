@@ -31,6 +31,7 @@ Python
 
 
 ## 🌐 Live API
+### ⚠️ Note: App may take ~30–60 seconds to load initially due to free-tier cold start.
 
 https://ai-music-coach-api.onrender.com/docs
 
