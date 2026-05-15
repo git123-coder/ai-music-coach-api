@@ -18,7 +18,7 @@ def analyze_audio(file_path):
     tempo_consistency = float(np.std(onset_env))
 
     return {
-        "tempo": tempo.item(),
-        "pitch_accuracy": pitch_accuracy,
-        "timing_variation": tempo_consistency
+        "tempo": round(tempo.item(),2),
+        "pitch_accuracy": round(pitch_accuracy,2),
+        "timing_variation": round(tempo_consistency,2)
     }

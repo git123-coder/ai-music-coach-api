@@ -4,9 +4,15 @@ import os
 from sqlalchemy.orm import Session
 
 from app.services.audio_analysis import analyze_audio
-from app.services.ai_feedback import generate_feedback
+from app.services.llm_feedback import generate_feedback
 from app.utils.dependencies import get_db
 from app.models.recording import Recording
+from app.services.issue_detection import detect_issues
+from app.services.scoring import compute_score
+from app.services.section_analysis import analyze_sections
+
+
+from app.services.progress import calculate_progress
 
 router = APIRouter()
 
@@ -32,22 +38,43 @@ def analyze_recording(
 
     analysis = analyze_audio(path)
 
-    feedback = generate_feedback(analysis)
+    issues = detect_issues(analysis)
+
+    score = compute_score(analysis)
+    
+    sections = analyze_sections(path)
+
+    feedback = generate_feedback(analysis, issues, score, sections)
+
+    
 
     rec = Recording(
 
         file_path=path,
 
-        analysis_data=str(analysis),
-
+        analysis_data=str({
+        "analysis": analysis,
+        "score": score
+    }),
         feedback=feedback
     )
+
+    previous_record = db.query(Recording).order_by(Recording.id.desc()).offset(1).first()
+
+    progress = "Not enough data"
+
+    if previous_record:
+        progress = calculate_progress(previous_record.analysis_data, score)
 
     db.add(rec)
 
     db.commit()
 
     return {
+        "feedback": feedback,
         "analysis": analysis,
-        "feedback": feedback
+        "issues": issues,
+        "score": score,
+        "sections": sections,
+        "progress": progress,
     }

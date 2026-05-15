@@ -1,5 +1,6 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Text
+from sqlalchemy import Column, Integer, String, ForeignKey, Text, DateTime
 from app.database.db import Base
+from datetime import datetime
 
 class Recording(Base):
 
@@ -12,3 +13,5 @@ class Recording(Base):
     analysis_data = Column(Text)
 
     feedback = Column(Text)
+
+    created_at = Column(DateTime, default=datetime.utcnow)
